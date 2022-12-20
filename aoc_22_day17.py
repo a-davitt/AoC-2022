@@ -10,6 +10,7 @@ my_in='>><<<>>>><<<><>>><><<<<>>>><>>>><<<<>><<<<>>>><<<<>>>><<<>>>><<<>><<<<>>>
 
 my_env = []
 
+#Remove any blank lines and add in a very specific number of blanks
 def Reset_env(my_env):
     i=0
     f=0
@@ -21,6 +22,7 @@ def Reset_env(my_env):
     my_env = [['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.']] + my_env[i:]
     return my_env
 
+#Right handed version of list index
 def Rindex(lis,char):
     for x in range(len(lis)-1,-1,-1):
         if lis[x]==char:
@@ -28,6 +30,7 @@ def Rindex(lis,char):
 
 in_ind=0
 
+#Function to simulate each rock falling
 for r in range(2022):
     print(r)
     my_env=Reset_env(my_env)
@@ -113,6 +116,7 @@ for r in range(2022):
                         my_row[x]='@'
             depth+=1
     
+#Count populated rows
 tot_ct=0
 for a in my_env:
     if a!=['.','.','.','.','.','.','.']:
@@ -123,20 +127,7 @@ print(tot_ct)
 
 
 """       PART 2      """
-
-chopped=0
-
-def Reset_env_2(my_env,chop):
-    i=0
-    f=0
-    while f==0 and i<len(my_env)-1:
-        if my_env[i]==['.','.','.','.','.','.','.']:
-            i+=1
-        else:
-            f=1
-    my_env = [['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.'],['.','.','.','.','.','.','.']] + my_env[i:]
-    return my_env
-
+# Find an instance where we have a loop. We can then assume this loop to run endlessly
 my_env=[]
 in_ind=0
 r=0
