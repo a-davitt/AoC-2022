@@ -2138,7 +2138,7 @@ my_in=[[2,2,2],
 [2,1,5],
 [2,3,5]]
 """
-
+#For each cube, we have 6 sides, if 2 cubes touch, that is 2 fewer sides
 tot_sides=0
 for i in range(len(my_in)):
     sides=6
@@ -2163,6 +2163,7 @@ print(tot_sides)
 
 
 """      PART 2     """
+#Add a border of "water" that will continuously look to invade air spaces where not bordered by lava
 my_arr=[]
 for x in range(22):
     my_arr.append([])
@@ -2188,6 +2189,7 @@ while j<8000:
                         my_arr[x][y][z]=-1
     j+=1
 
+# Create a list of air pockets that remain, these can be treated like lava and we can repeat what we did for part 1
 pockets=[]                    
 for x in range(22):
     for y in range(22):
